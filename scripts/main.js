@@ -1,7 +1,14 @@
 (function () {
     'use strict';
 
-    angular.module('FancyFriday', []);
+    angular
+        .module('FancyFriday', [])
+        .config(function($sceDelegateProvider) {
+        $sceDelegateProvider.resourceUrlWhitelist([
+            "self",
+            /(mp3|ogg)$/,
+        ]);
+    });
 
     angular
         .module('FancyFriday')
@@ -48,7 +55,7 @@
             $http({
                 method: 'GET',
                 // type: track / album / playlist
-                url: forwardUrl('https://api.spotify.com/v1/search?q=' + query + '&type=track')
+                url: forwardUrl('https://api.spotify.com/v1/search?q=' + encodeURIComponent(query) + '&type=track')
             })
                 .success(function () { if (vm.currentTrackSearch === query || force) cb.apply(this, arguments) });
         }
@@ -66,4 +73,28 @@
                 '&response_type=token';
         }
     }
+
+    angular
+        .module('FancyFriday')
+        .directive('easyAudio', EasyAudioDirective);
+
+    function EasyAudioDirective ()
+    {
+        return {
+            link: link,
+            scope: {
+                source: '=?'
+            },
+            restrict: 'AE'
+        };
+
+        function link (scope, element, attrs) {
+            console.log('LINNK');
+
+            scope.$watch('source', function (source) {
+                element[0].innerHTML = '<audio controls="false" autoplay><source src="' + source + '"></audio>';
+            });
+        }
+    }
+
 })();

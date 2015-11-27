@@ -1,6 +1,3 @@
-
-
-
 <ul class="album-backgrounds">
     <li ng-repeat="searchResult in main.searchResults track by searchResult.id">
         <img ng-src="{{ searchResult.album.images[0].url }}" height="300" width="300"/>
@@ -9,7 +6,26 @@
 
 <div class="main">
     <div class="search">
-        <input type="search" ng-model="main.currentTrackSearch" ng-keyup="main.search()" />
+        <input placeholder="Search..." type="search" ng-model="main.currentTrackSearch" ng-keyup="main.search()" />
         <button aria-label="Search"><i class="fa fa-search"></i></button>
     </div>
+
+    <ul class="search-results">
+        <li ng-repeat="searchResult in main.searchResults track by searchResult.id">
+            <span class="action-button">
+                <i class="fa fa-plus-square"></i>
+            </span>
+
+            <div class="search-result-info">
+                <span class="search-result-album" ng-bind="searchResult.artists[0].name"></span>
+                <span class="search-result-name" ng-bind="searchResult.name"></span>
+
+                <span ng-click="searchResult.play = !searchResult.play">Play</span>
+
+                <div ng-if="searchResult.play">
+                    <easy-audio source="searchResult['preview_url']"></easy-audio>
+                </div>
+            </div>
+        </li>
+    </ul>
 </div>

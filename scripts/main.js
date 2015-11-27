@@ -14,7 +14,7 @@
         .module('FancyFriday')
         .controller('MainController', MainController);
 
-    function MainController ($scope, $http)
+    function MainController ($http)
     {
         var SPOTIFY_CLIENT_ID = '6dd0e38dc24a4f9494881679032d442a';
 
@@ -25,6 +25,7 @@
         vm.init = init;
         vm.login = login;
         vm.search = search;
+        vm.addTrackToSpotifyPlaylist = addTrackToSpotifyPlaylist;
 
         init();
 
@@ -32,20 +33,40 @@
         {
             if (window.location.href.match(/.*access_token=.*&.*/gi)) {
                 vm.spotifyAccessToken = window.location.href.split('access_token=')[1].split('&')[0];
+
+                getCurrentSpotifyUser(function (userData) {
+                    vm.currentSpotifyUser = userData;
+                });
+
                 search('taylor', true);
             }
-
-            $http({
-                method: 'GET',
-
-                // type: track / album / playlist
-                url: './api/?action=spotify_me&access_token=' + vm.spotifyAccessToken
-            }).success(function (data) {console.log(data)});
         }
 
         function login ()
         {
             window.location.href = getLoginUrl(['playlist-read-private', 'playlist-modify', 'playlist-modify-private']);
+        }
+
+        function getCurrentSpotifyUser (cb)
+        {
+            $http({
+                method: 'GET',
+
+                // type: track / album / playlist
+                url: './api/?action=spotify_me&access_token=' + vm.spotifyAccessToken
+            }).success(cb);
+        }
+
+        function addTrackToSpotifyPlaylist (trackUri)
+        {
+            $http({
+                method: 'GET',
+
+                // type: track / album / playlist
+                url: './api/?action=spotify_add_track&access_token=' + vm.spotifyAccessToken + '&track_uri=' + trackUri
+            }).success(function (data) {
+                console.log('data', data);
+            });
         }
 
         function search (query, force)
@@ -96,8 +117,6 @@
         };
 
         function link (scope, element, attrs) {
-            console.log('LINNK');
-
             scope.$watch('source', function (source) {
                 element[0].innerHTML = '<audio controls="false" autoplay><source src="' + source + '"></audio>';
             });

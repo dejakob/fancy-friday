@@ -99,4 +99,9 @@ body {
   line-height: 25px;
   font-size: 25px;
   color: #088E08;
+  border: none;
+  background: none;
+}
+.search-results .action-button:focus {
+  outline: none;
 }

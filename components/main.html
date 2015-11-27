@@ -12,9 +12,9 @@
 
     <ul class="search-results">
         <li ng-repeat="searchResult in main.searchResults track by searchResult.id">
-            <span class="action-button">
+            <button class="action-button" ng-click="main.addTrackToSpotifyPlaylist(searchResult.uri)">
                 <i class="fa fa-plus-square"></i>
-            </span>
+            </button>
 
             <div class="search-result-info">
                 <span class="search-result-album" ng-bind="searchResult.artists[0].name"></span>

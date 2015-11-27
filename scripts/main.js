@@ -1,6 +1,9 @@
 (function () {
     'use strict';
 
+    // var URL = 'http://fancy-friday.dev';
+    var URL = 'http://dejakob.com/fancy-friday';
+
     angular
         .module('FancyFriday', [])
         .config(function($sceDelegateProvider) {
@@ -96,7 +99,7 @@
         function getLoginUrl (scopes)
         {
             return 'https://accounts.spotify.com/authorize?client_id=' + SPOTIFY_CLIENT_ID +
-                '&redirect_uri=http://fancy-friday.dev' +
+                '&redirect_uri=' + URL +
                 '&scope=' + encodeURIComponent(scopes.join(' ')) +
                 '&response_type=token';
         }

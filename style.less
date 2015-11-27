@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    color: #666;
+}
+
+.album-backgrounds {
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: ~"calc(100% + 299px)";
+    z-index: -1;
+
+    > li {
+        float: left;
+        width: 300px;
+        height: 300px;
+    }
+}
+
+.main {
+    z-index: 1;
+}
+
+.search {
+    margin: 15px;
+    height: 50px;
+    border-bottom: 5px #fff solid;
+    background: rgba(255,255,255,0.8);
+
+    input {
+        width: ~"calc(100% - 70px)";
+    }
+
+    button, input {
+        background: none;
+        border: none;
+        height: 50px;
+        line-height: 50px;
+        padding-left: 15px;
+        font-size: 30px;
+        color: #666;
+    }
+}

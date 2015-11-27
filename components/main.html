@@ -1,0 +1,15 @@
+
+
+
+<ul class="album-backgrounds">
+    <li ng-repeat="searchResult in main.searchResults track by searchResult.id">
+        <img ng-src="{{ searchResult.album.images[0].url }}" height="300" width="300"/>
+    </li>
+</ul>
+
+<div class="main">
+    <div class="search">
+        <input type="search" ng-model="main.currentTrackSearch" ng-keyup="main.search()" />
+        <button aria-label="Search"><i class="fa fa-search"></i></button>
+    </div>
+</div>

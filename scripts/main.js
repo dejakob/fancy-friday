@@ -13,8 +13,11 @@
 
         var vm = this;
 
+        vm.currentTrackSearch = '';
+
         vm.init = init;
         vm.login = login;
+        vm.search = search;
 
         init();
 
@@ -22,8 +25,7 @@
         {
             if (window.location.href.match(/.*access_token=.*&.*/gi)) {
                 vm.spotifyAccessToken = window.location.href.split('access_token=')[1].split('&')[0];
-
-                searchTrack('hello', function (data) {console.log(data)});
+                search('taylor', true);
             }
         }
 
@@ -32,14 +34,23 @@
             window.location.href = getLoginUrl(['playlist-read-private', 'playlist-modify', 'playlist-modify-private']);
         }
 
-        function searchTrack (query, cb)
+        function search (query, force)
+        {
+            searchTrack(query || vm.currentTrackSearch, function (data) {
+                if (data.tracks) {
+                    vm.searchResults = data.tracks.items;
+                }
+            }, force);
+        }
+
+        function searchTrack (query, cb, force)
         {
             $http({
                 method: 'GET',
                 // type: track / album / playlist
                 url: forwardUrl('https://api.spotify.com/v1/search?q=' + query + '&type=track')
             })
-                .success(cb);
+                .success(function () { if (vm.currentTrackSearch === query || force) cb.apply(this, arguments) });
         }
 
         function forwardUrl (url)

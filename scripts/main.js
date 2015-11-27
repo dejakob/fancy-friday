@@ -34,6 +34,13 @@
                 vm.spotifyAccessToken = window.location.href.split('access_token=')[1].split('&')[0];
                 search('taylor', true);
             }
+
+            $http({
+                method: 'GET',
+
+                // type: track / album / playlist
+                url: './api/?action=spotify_me&access_token=' + vm.spotifyAccessToken
+            }).success(function (data) {console.log(data)});
         }
 
         function login ()

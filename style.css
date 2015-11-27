@@ -36,21 +36,45 @@ body {
 .search {
   margin: 15px;
   height: 50px;
-  border-bottom: 5px #fff solid;
-  background: rgba(255, 255, 255, 0.8);
+  position: relative;
 }
 .search input {
-  width: calc(100% - 70px);
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-transition: background 0.5s;
+  -moz-transition: background 0.5s;
+  -ms-transition: background 0.5s;
+  -o-transition: background 0.5s;
+  transition: background 0.5s;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 5px #fff solid;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.search input:focus {
+  background: #ffffff;
+  border-bottom-color: #088E08;
 }
 .search button,
 .search input {
-  background: none;
-  border: none;
-  height: 50px;
-  line-height: 50px;
   padding-left: 15px;
   font-size: 30px;
   color: #666;
+}
+.search button:focus,
+.search input:focus {
+  outline: none;
+}
+.search button {
+  line-height: 45px;
+  height: 45px;
+  background: none;
+  border: none;
+  position: absolute;
+  right: 15px;
+  top: 0;
 }
 .search-results {
   margin: 15px;

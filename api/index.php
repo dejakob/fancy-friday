@@ -26,6 +26,11 @@ class FancyFridayApi
                     if (isset($this->get['url']))
                         ForwardAction::run($this->get['url']);
                     break;
+
+                case 'spotify_me':
+                    if (isset($this->get['access_token']))
+                        SpotifyAction::me($this->get['access_token']);
+                    break;
             }
         }
 
@@ -49,5 +54,13 @@ class ForwardAction
     {
         $fileContents = file_get_contents($url);
         die($fileContents);
+    }
+}
+
+class SpotifyAction
+{
+    public static function me ($accessToken)
+    {
+        die(shell_exec('curl -X GET "https://api.spotify.com/v1/me" -H "Authorization: Bearer ' . $accessToken . '"'));
     }
 }

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/dejakob/fancy-friday#readme",
   "dependencies": {
+    "angular": "^1.4.8",
     "local-web-server": "^0.5.24"
   }
 }

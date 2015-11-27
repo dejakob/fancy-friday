@@ -1,0 +1,22 @@
+{
+  "name": "fancy-friday",
+  "version": "1.0.0",
+  "description": "Fancy friday",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dejakob/fancy-friday.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dejakob/fancy-friday/issues"
+  },
+  "homepage": "https://github.com/dejakob/fancy-friday#readme",
+  "dependencies": {
+    "local-web-server": "^0.5.24"
+  }
+}

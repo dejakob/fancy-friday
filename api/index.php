@@ -72,7 +72,7 @@ class SpotifyAction
 
     public static function me ($accessToken)
     {
-        return shell_exec('curl -X GET "https://api.spotify.com/v1/me" -H "Authorization: Bearer ' . $accessToken . '"');
+        return shell_exec('curl -X GET "https://api.spotify.com/v1/me" -H "Authorization: Bearer ' . urlencode($accessToken) . '"');
     }
 
     public static function addTrackToPlaylist ($accessToken, $trackUri)

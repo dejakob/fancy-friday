@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    // var URL = 'http://fancy-friday.dev';
     var URL = 'http://dejakob.com/fancy-friday';
+    // var URL = 'http://fancy-friday.dev';
 
     angular
         .module('FancyFriday', [])

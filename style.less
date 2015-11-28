@@ -7,6 +7,14 @@ li {
     list-style: none;
 }
 
+button {
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+}
+
 body {
     color: #666;
     font-family: 'Lato', san-serif;
@@ -69,10 +77,6 @@ body {
         padding-left: 15px;
         font-size: 30px;
         color: #666;
-
-        &:focus {
-            outline: none;
-        }
     }
 
     button {
@@ -113,9 +117,52 @@ body {
         color: #088E08;
         border: none;
         background: none;
+    }
+}
 
-        &:focus {
-            outline: none;
-        }
+.login-view {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b5bdc8+0,828c95+36,28343b+100;Grey+Black+3D */
+    background: #b5bdc8; /* Old browsers */
+    background: -moz-linear-gradient(top,  #b5bdc8 0%, #828c95 36%, #28343b 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #b5bdc8 0%,#828c95 36%,#28343b 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #b5bdc8 0%,#828c95 36%,#28343b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5bdc8', endColorstr='#28343b',GradientType=0 ); /* IE6-9 */
+
+
+    .logging-button {
+        background-color: #2EBD59;
+        color: #fff;
+        border-radius: 3px;
+        border: none;
+        line-height: 16px;
+        font-size: 16px;
+        padding: 10px;
+        text-align: center;
+        width: 80%;
+        position: relative;
+        margin: 25px auto;
+        display: block;
+    }
+
+    .sp-logo {
+        position: relative;
+        margin: 15px auto 0 auto;
+        display: block;
+    }
+
+    h1 {
+        text-align: center;
+        font-family: 'Lato', san-serif;
+        font-weight: 100;
+        color: #fff;
+    }
+
+    h2 {
+        text-align: center;
+        width: 80%;
+        margin-left: 20%;
+        color: #fff;
     }
 }

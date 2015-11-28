@@ -140,6 +140,8 @@ body {
   position: relative;
   margin: 15px auto 0 auto;
   display: block;
+  width: 70%;
+  max-width: 500px;
 }
 .login-view h1 {
   text-align: center;

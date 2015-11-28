@@ -83,7 +83,7 @@ class SpotifyAction
         $userIdOfPlaylist = self::$userIdOfPlaylist;
         $playlistId = self::$playlistId;
 
-        $curlRequest = 'curl -i -X POST "https://api.spotify.com/v1/users/' . $userIdOfPlaylist . '/playlists/' . $playlistId . '/tracks?uris=' . urlencode($trackUri) . '" -H "Authorization: Bearer ' . $accessToken . '" -H "Accept: application/json";';
+        $curlRequest = 'curl -i -X POST "https://api.spotify.com/v1/users/' . $userIdOfPlaylist . '/playlists/' . $playlistId . '/tracks?uris=' . urlencode($trackUri) . '" -H "Authorization: Bearer ' . urlencode($accessToken) . '" -H "Accept: application/json";';
 
         if ($meId === $userIdOfPlaylist) {
             return shell_exec($curlRequest);
@@ -111,7 +111,7 @@ class SpotifyAction
 
             if (mb_strlen($trackUri) > 1) {
                 $trackUris = str_replace(' ', ',', $trackUri);
-                $curlRequest = 'curl -i -X POST "https://api.spotify.com/v1/users/' . self::$userIdOfPlaylist . '/playlists/' . self::$playlistId . '/tracks?uris=' . $trackUris . '" -H "Authorization: Bearer ' . $accessToken . '" -H "Accept: application/json";';
+                $curlRequest = 'curl -i -X POST "https://api.spotify.com/v1/users/' . self::$userIdOfPlaylist . '/playlists/' . self::$playlistId . '/tracks?uris=' . $trackUris . '" -H "Authorization: Bearer ' . urlencode($accessToken) . '" -H "Accept: application/json";';
                 shell_exec($curlRequest);
                 file_put_contents(self::$cacheFile, '');
             }
